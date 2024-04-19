@@ -86,6 +86,7 @@ app.use(express.urlencoded({ extended: false }));
 // Middleware function to check if user is authenticated
 const isAuthenticated = (req, res, next) => {
   console.log("User is authenticated: ", req.isAuthenticated());
+  console.log("User's session info when checking authentication: ", req.session);
   if (req.isAuthenticated()) {
     return next();
   }
@@ -115,9 +116,11 @@ app.use((req, res, next) => {
 app.post('/api/login', (req, res, next) => {
   passport.authenticate('local', (err, user, { message }) => {
     if (err) {
+      console.log("Login error: ", err);
       return next(err);
     }
     if (!user) {
+      console.log("User not found during Login");
       return res.json({ success: false, message });
     }
     req.logIn(user, (err) => {
