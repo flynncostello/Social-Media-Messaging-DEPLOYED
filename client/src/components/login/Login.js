@@ -10,7 +10,7 @@ import { API_ENDPOINT } from '../../api/index';
 
 // Socket originates in this file and is also used in Chatroom.js for sending real-time messages
 import io from 'socket.io-client';
-export const socket = io('https://localhost:3000');
+export const socket = io('https://social-media-messaging-deployed.onrender.com');
 
 /*
 All that is done in login is getting users data from database as well as current socket id and
