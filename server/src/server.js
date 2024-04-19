@@ -48,16 +48,10 @@ const server = http.createServer(app);
 // Set up socket.io server to receive from ports 3000 -> 3010 for development
 const io = new Server(server, {
   cors: {
-    origin: function (origin, callback) {
-      if (!origin || origin === 'https://friendz-chat-app.netlify.app/') {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
+    origin: 'https://friendz-chat-app.netlify.app', // Only allow requests from this origin
     methods: ['GET', 'POST'],
-    credentials: true,
-  },
+    credentials: true
+  }
 });
 
 // Generate a secret key for the app session
@@ -68,14 +62,8 @@ const secretKey = crypto.randomBytes(64).toString('hex'); // Secret key for app 
 // Middleware for app
 app.use(
   cors({
-    origin: function (origin, callback) {
-      if (!origin || origin === 'https://friendz-chat-app.netlify.app/') {
-        callback(null, true);
-      } else {
-        callback(new Error('Not allowed by CORS'));
-      }
-    },
-    credentials: true,
+    origin: 'https://friendz-chat-app.netlify.app', // Only allow requests from this origin
+    credentials: true
   }),
   session({
     secret: secretKey,
@@ -271,7 +259,7 @@ io.on('connection', (socket) => {
 //-----------------//
 // RUNNING SERVER //
 //---------------//
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 10000;
 
 server.listen(port, () => {
   console.log(`Server listening on port ${port}!`);
