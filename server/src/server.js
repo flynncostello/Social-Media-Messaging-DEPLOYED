@@ -49,15 +49,14 @@ const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
     origin: function (origin, callback) {
-      // Allow connections from any localhost with ports ranging from 3000 to 3010
-      if (!origin || /^https:\/\/localhost:(30[0-9][0-9]|31[0-0][0-9]|3010)$/.test(origin)) {
+      if (!origin || origin === 'https://friendz-chat-app.netlify.app/') {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
       }
     },
     methods: ['GET', 'POST'],
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    credentials: true,
   },
 });
 
@@ -70,14 +69,13 @@ const secretKey = crypto.randomBytes(64).toString('hex'); // Secret key for app 
 app.use(
   cors({
     origin: function (origin, callback) {
-      // Allow requests from any localhost with ports ranging from 3000 to 3010
-      if (!origin || /^https:\/\/localhost:(30[0-9][0-9]|31[0-0][0-9]|3010)$/.test(origin)) {
+      if (!origin || origin === 'https://friendz-chat-app.netlify.app/') {
         callback(null, true);
       } else {
         callback(new Error('Not allowed by CORS'));
       }
     },
-    credentials: true, // Allow credentials (cookies, authorization headers, etc.)
+    credentials: true,
   }),
   session({
     secret: secretKey,
