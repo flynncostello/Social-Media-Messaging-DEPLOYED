@@ -1,19 +1,16 @@
-//require("dotenv").config();
-const fs = require('fs');
-const https = require('https');
+require("dotenv").config();
+//const fs = require('fs');
+//const https = require('https');
 const express = require('express');
 const cors = require('cors');
 const logger = require('morgan');
-const path = require('path');
+//const path = require('path');
 
 const supabase = require('./services/supabaseDatabaseService');
 const crypto = require('crypto');
 const { Server } = require('socket.io');
 
 const session = require('express-session');
-
-
-
 
 const usersRouter = require("./routes/usersRouter");
 const friendsRouter = require("./routes/friendsRouter");
@@ -31,6 +28,7 @@ initializePassport(passport);
 
 const app = express(); // Used for middleware and routing
 
+/*
 // Load the SSL/TLS certificate files
 const keyFilePath = path.join(__dirname, 'certs/key.pem');
 const certFilePath = path.join(__dirname, 'certs/cert.pem');
@@ -43,6 +41,9 @@ const credentials = {
 
 // Create server
 const server = https.createServer(credentials, app);
+*/
+const http = require('http');
+const server = http.createServer(app);
 
 // Set up socket.io server to receive from ports 3000 -> 3010 for development
 const io = new Server(server, {
