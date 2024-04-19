@@ -1,0 +1,59 @@
+.main-page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Nav Bar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 10px;
+  border: 1px solid black;
+  
+}
+
+.navbar-logo {
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  color: black;
+  font-size: 25px;
+  font-weight: 500;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navbar-buttons {
+  font-size: 18px;
+}
+
+.login-button {
+  color: rgb(0, 106, 255);
+}
+
+.signup-button {
+  text-decoration: none;
+  color: rgb(255, 255, 255);
+  padding: 10px;
+  margin: 10px;
+  background-color: rgb(0, 166, 255);
+  border-radius: 5px;
+}
+
+.signup-button:hover, .login-button:hover {
+  opacity: 0.8;
+}
+
+.signup-button:active, .login-button:active {
+  opacity: 0.6;
+}
+
+
+/* Main body */
+.home-page-main-text {
+  margin: 20px;
+}
+
+.home-page-footer {
+  margin: 20px;
+}
