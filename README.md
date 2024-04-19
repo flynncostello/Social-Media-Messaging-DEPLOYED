@@ -1,4 +1,4 @@
-Social Media Messaging App
+Social Media Messaging App (DEPLOYABLE VERSION)
 
 This app allows you to securely message your friends whenever you want! It allows you to request new friends, start conversations with them, and send messages in real-time.
 
